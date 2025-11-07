@@ -3,273 +3,829 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Doe - CV</title>
+    <title>ZAINAB KHAN - Sociologist & Social Researcher Portfolio</title>
     <style>
-        /* --- General Styles & Font --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
-            --primary-color: #2c3e50; /* Dark Blue-Grey */
-            --secondary-color: #3498db; /* Bright Blue */
-            --background-color: #ecf0f1; /* Light Grey */
-            --text-color: #34495e; /* Dark Grey */
-            --sidebar-bg: #ffffff;
-            --main-bg: #ffffff;
+            --primary-color: #2c5f7c; /* A professional, muted blue */
+            --secondary-color: #4a8fa3;
+            --accent-color: #d4a574; /* A warm accent for contrast */
+            --text-dark: #333333;
+            --text-light: #555555;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
         }
 
-        /* --- Container for the CV --- */
-        .cv-container {
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--bg-white);
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-container {
             display: flex;
-            max-width: 900px;
-            margin: 20px auto;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            background-color: var(--main-bg);
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
         }
 
-        /* --- Left Sidebar --- */
-        .sidebar {
-            width: 35%;
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 30px;
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 95, 124, 0.85), rgba(44, 95, 124, 0.85)), url('https://source.unsplash.com/random/1600x900/?community,people') center/cover;
+            color: white;
+            padding: 140px 0 100px;
+            margin-top: 70px;
             text-align: center;
         }
 
-        .profile-header img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid var(--secondary-color);
-            object-fit: cover;
-            margin-bottom: 20px;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 0.8s ease;
         }
 
-        .sidebar h1 {
-            margin: 0;
-            font-size: 2em;
-            font-weight: 700;
+        .hero .subtitle {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s both;
         }
 
-        .sidebar .title {
-            font-size: 1.2em;
-            color: var(--secondary-color);
-            margin-top: 5px;
-            margin-bottom: 30px;
+        .hero-summary {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+            opacity: 0.85;
+            animation: fadeInUp 0.8s ease 0.4s both;
         }
 
-        .sidebar h2 {
-            font-size: 1.2em;
-            text-transform: uppercase;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 10px;
-            margin-top: 30px;
-            margin-bottom: 15px;
+        .hero-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s both;
         }
 
-        .contact-info p, .skills-section p, .languages-section p {
-            margin: 8px 0;
-            font-size: 0.9em;
+        .hero-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .contact-info a {
-            color: #ffffff;
+        .hero-contact-item a {
+            color: white;
             text-decoration: none;
         }
+        .hero-contact-item a:hover {
+            text-decoration: underline;
+        }
 
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 0.5rem auto 0;
+        }
+
+        /* About Section */
+        .about-content {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        .timeline-content {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            width: calc(50% - 40px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: 20px;
+            width: calc(50% - 40px);
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            right: 0;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 3px solid var(--bg-white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .timeline-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .timeline-content ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 0.5rem;
+        }
+        .timeline-content ul li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-institution {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Education & Certifications */
+        .simple-list {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .simple-list-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .simple-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .simple-list-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .simple-list-item p {
+            color: var(--text-light);
+        }
+        .simple-list-item p strong {
+            color: var(--text-dark);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-white);
+        }
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
         .contact-info a:hover {
             text-decoration: underline;
         }
 
-        .skills-list {
-            list-style-type: none;
-            padding: 0;
-            text-align: left;
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
         }
 
-        .skills-list li {
-            background-color: var(--secondary-color);
-            padding: 5px 10px;
-            margin: 5px 0;
-            border-radius: 5px;
-            font-size: 0.85em;
-        }
-
-        /* --- Main Content Area --- */
-        .main-content {
-            width: 65%;
-            padding: 40px;
-        }
-
-        .main-content h2 {
-            font-size: 1.8em;
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--secondary-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .summary p {
-            font-size: 1em;
-            margin-bottom: 30px;
-        }
-
-        .experience-item, .education-item {
-            margin-bottom: 25px;
-        }
-
-        .experience-item h3, .education-item h3 {
-            font-size: 1.3em;
-            color: var(--primary-color);
-            margin: 0;
-        }
-
-        .experience-item .company, .education-item .school {
-            font-style: italic;
-            color: var(--secondary-color);
-            font-weight: bold;
-        }
-
-        .experience-item .date, .education-item .date {
-            font-size: 0.9em;
-            color: #777;
-            float: right;
-        }
-
-        .experience-item ul {
-            list-style-type: square;
-            padding-left: 20px;
-            margin-top: 10px;
-        }
-
-        .experience-item li {
-            margin-bottom: 5px;
-        }
-
-        /* --- Print Styles --- */
-        @media print {
-            body {
-                margin: 0;
-                background-color: #fff;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            .cv-container {
-                box-shadow: none;
-                margin: 0;
-                max-width: 100%;
-                display: flex;
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero .subtitle {
+                font-size: 1.4rem;
+            }
+            .timeline::before {
+                left: 30px;
+            }
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+            .timeline-date {
+                position: relative;
                 width: 100%;
+                text-align: left !important;
+                margin-bottom: 1rem;
+                left: 0 !important;
             }
-            .sidebar, .main-content {
-                overflow: hidden; /* Prevents content from spilling to a new page */
-            }
-            section {
-                page-break-inside: avoid; /* Avoids breaking sections across pages */
-            }
-            .experience-item, .education-item {
-                page-break-inside: avoid;
+            .timeline-dot {
+                left: 30px;
             }
         }
     </style>
 </head>
 <body>
-
-    <div class="cv-container">
-        <!-- =================== LEFT SIDEBAR =================== -->
-        <aside class="sidebar">
-            <header class="profile-header">
-                <!-- EDIT: Replace 'profile.jpg' with your photo filename if different -->
-                <img src="profile.jpg" alt="Profile Picture of John Doe">
-                
-                <!-- EDIT: Your Name and Title -->
-                <h1>John Doe</h1>
-                <p class="title">Software Engineer</p>
-            </header>
-
-            <section class="contact-info">
-                <h2>Contact</h2>
-                <!-- EDIT: Your Contact Details -->
-                <p>📍 123 Your Street, Your City, 12345</p>
-                <p>📞 <a href="tel:+11234567890">+1 (123) 456-7890</a></p>
-                <p>✉️ <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-                <p>🔗 <a href="https://www.linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
-                <p>🌐 <a href="https://www.yourportfolio.com" target="_blank">yourportfolio.com</a></p>
-            </section>
-
-            <section class="skills-section">
-                <h2>Skills</h2>
-                <!-- EDIT: Add or remove skills as needed -->
-                <ul class="skills-list">
-                    <li>JavaScript (ES6+)</li>
-                    <li>React & Node.js</li>
-                    <li>Python & Django</li>
-                    <li>HTML5 & CSS3</li>
-                    <li>SQL & NoSQL Databases</li>
-                    <li>Git & GitHub</li>
-                    <li>Agile & Scrum</li>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#home" class="nav-logo">ZK</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Research</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
-            </section>
+            </div>
+        </div>
+    </nav>
 
-            <section class="languages-section">
-                <h2>Languages</h2>
-                <!-- EDIT: Add your languages -->
-                <p>English (Native)</p>
-                <p>Spanish (Professional)</p>
-            </section>
-        </aside>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>ZAINAB KHAN</h1>
+            <p class="subtitle">Sociologist | Social Researcher | Educator</p>
+            <p class="hero-summary">
+                Dynamic educator, social worker and social researcher with a proven track record in multicultural education and problem-solving. Leveraging innovative planning and individualized instruction to boost student engagement and community outcomes.
+            </p>
+            <div class="hero-contact">
+                <div class="hero-contact-item">
+                    <span>📧</span>
+                    <a href="mailto:me.zainabkhan22@gmail.com">me.zainabkhan22@gmail.com</a>
+                </div>
+                <div class="hero-contact-item">
+                    <span>📱</span>
+                    <a href="tel:+923047040024">+92 304 704 0024</a>
+                </div>
+                <div class="hero-contact-item">
+                    <span>📍</span>
+                    <span>Islamabad, Pakistan</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- =================== MAIN CONTENT =================== -->
-        <main class="main-content">
-            <section class="summary">
-                <h2>Professional Summary</h2>
-                <!-- EDIT: Write a brief, compelling summary about yourself -->
+    <!-- About Section -->
+    <section id="about" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
                 <p>
-                    Results-driven Software Engineer with over 5 years of experience in developing, deploying, and maintaining full-stack web applications. Proven ability to optimize application performance, lead project development, and collaborate effectively in agile environments. Seeking to leverage technical expertise and leadership skills to contribute to a challenging and innovative team.
+                    I am a dedicated sociologist and social worker with extensive experience in education, community development, and research. My career has spanned roles in private schools, development organizations, and healthcare settings, where I have consistently focused on empowering vulnerable populations, particularly women and children. I excel in building strong community relationships, conducting insightful research, and developing educational programs that foster awareness and social cohesion. My work is driven by a passion for social justice and a commitment to creating positive, sustainable change.
                 </p>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <section class="experience">
-                <h2>Experience</h2>
-                <!-- EDIT: Add your work experience. Copy and paste the 'experience-item' block for more jobs. -->
-                <article class="experience-item">
-                    <h3>Senior Software Engineer</h3>
-                    <span class="company">Tech Solutions Inc.</span>
-                    <span class="date">Jan 2020 – Present</span>
-                    <ul>
-                        <li>Led a team of 4 developers to redesign the company's flagship product, resulting in a 30% increase in user engagement.</li>
-                        <li>Developed and launched a new microservice architecture using Node.js and Docker, improving scalability and reducing server costs by 15%.</li>
-                        <li>Mentored junior developers and conducted code reviews to ensure high-quality standards.</li>
+    <!-- Experience Section -->
+    <section id="experience" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - 2023</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>School Teacher</h3>
+                        <h4>Sunshine English Medium Private School</h4>
+                        <ul>
+                            <li>Worked one-on-one with students to determine strengths, weaknesses, and learning patterns.</li>
+                            <li>Created study guides, research materials, and syllabi to enhance learning.</li>
+                            <li>Established open communication with students, parents, and staff.</li>
+                            <li>Organized extracurricular clubs and boosted cultural, religious, and societal awareness.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2016 - 2017</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Young Social Researcher</h3>
+                        <h4>German Embassy</h4>
+                        <ul>
+                            <li>Promoted peace through interfaith dialogues and inclusive community events.</li>
+                            <li>Engaged religious leaders and community influencers in peacebuilding efforts.</li>
+                            <li>Trained communities on human rights, interfaith harmony, and social inclusion.</li>
+                            <li>Monitored conflict risks and mediated tensions with local partners.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2014 - 2015</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Hospital Social Adviser</h3>
+                        <h4>Surgical Hospital Karor Lal Esan</h4>
+                        <ul>
+                            <li>Conducted patient and family interviews to understand socio-economic challenges.</li>
+                            <li>Collaborated with medical professionals to develop holistic care plans.</li>
+                            <li>Carried out research on health-related social issues like stigma and domestic violence.</li>
+                            <li>Organized awareness sessions on preventive health and social well-being.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2013</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Social Worker</h3>
+                        <h4>Awami Development Organization</h4>
+                        <ul>
+                            <li>Facilitated youth and women's groups to strengthen local community structures.</li>
+                            <li>Collected field data and community feedback for reporting and improvements.</li>
+                            <li>Coordinated with NGOs and local authorities for service delivery.</li>
+                            <li>Supported M&E through data collection and beneficiary tracking.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Research & Analysis</h3>
+                    <ul class="skill-list">
+                        <li>Social Research</li>
+                        <li>Data Collection & Analysis</li>
+                        <li>Problem-Solving Skills</li>
+                        <li>Monitoring & Evaluation (M&E)</li>
+                        <li>Ethnographical Study</li>
                     </ul>
-                </article>
-
-                <article class="experience-item">
-                    <h3>Software Engineer</h3>
-                    <span class="company">Innovate Digital</span>
-                    <span class="date">Jun 2017 – Dec 2019</span>
-                    <ul>
-                        <li>Built and maintained responsive client-side features using React, Redux, and CSS3.</li>
-                        <li>Collaborated with back-end developers to integrate RESTful APIs and optimize data flow.</li>
-                        <li>Participated in the full software development lifecycle, from concept and design to testing and deployment.</li>
+                </div>
+                <div class="skill-category">
+                    <h3>Community & Education</h3>
+                    <ul class="skill-list">
+                        <li>Multicultural Education</li>
+                        <li>Project-Based Learning</li>
+                        <li>Activity Planning</li>
+                        <li>Parent-Teacher Communication</li>
+                        <li>Social Cohesion Strategies</li>
                     </ul>
-                </article>
-            </section>
+                </div>
+                <div class="skill-category">
+                    <h3>Advocacy & Communication</h3>
+                    <ul class="skill-list">
+                        <li>Relationship Building</li>
+                        <li>Team Collaboration</li>
+                        <li>Interfaith Dialogue</li>
+                        <li>Community Awareness</li>
+                        <li>Stakeholder Coordination</li>
+                    </ul>
+                </div>
+                 <div class="skill-category">
+                    <h3>Languages</h3>
+                    <ul class="skill-list">
+                        <li><strong>Fluent:</strong> Saraiki</li>
+                        <li>English</li>
+                        <li>Urdu</li>
+                        <li>Punjabi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <section class="education">
-                <h2>Education</h2>
-                <!-- EDIT: Add your education details. Copy and paste the 'education-item' block for more degrees. -->
-                <article class="education-item">
-                    <h3>Bachelor of Science in Computer Science</h3>
-                    <span class="school">University of Technology</span>
-                    <span class="date">Graduated May 2017</span>
-                </article>
-            </section>
-        </main>
-    </div>
+    <!-- Projects/Research Section -->
+    <section id="projects" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Research Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Socio-cultural Causes of Spousal Abuse</h3>
+                        <p class="project-institution">Case Study: District Layyah</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            An in-depth analysis of the cultural and societal factors contributing to women's vulnerability and spousal abuse in the specific region of Warah Sehran Wala.
+                        </p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Sociological Analysis of Widowhood</h3>
+                        <p class="project-institution">Case Study: South Punjab, Pakistan</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Research exploring the social, economic, and psychological challenges faced by widows in South Punjab, highlighting their resilience and societal role.
+                        </p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Religious Peace and Integrity</h3>
+                        <p class="project-institution">Ethnographical Study: Sindh & Punjab (German Embassy)</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            An ethnographic study commissioned by the German Embassy, examining the dynamics of interfaith harmony and the promotion of peace across different communities in Sindh and Punjab.
+                        </p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Domestic Tourism and Economic Change</h3>
+                        <p class="project-institution">Case Study: Saidpur Village, Islamabad (PIDE)</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Investigation into the impact of domestic tourism on the local economy and social fabric of Saidpur Village, in collaboration with the Pakistan Institute of Development Economics (PIDE).
+                        </p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Community-Based Tourism</h3>
+                        <p class="project-institution">Case Study: Saidpur Village, Islamabad (PIDE)</p>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            A study on models of community-based tourism, focusing on sustainable practices, local empowerment, and cultural preservation in the context of Saidpur Village.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Education Section -->
+    <section id="education" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="simple-list">
+                <div class="simple-list-item">
+                    <h3>M.Phil: Social Sciences</h3>
+                    <p><strong>Arid Agriculture University</strong>, Rawalpindi | <em>Graduated 09/2018</em></p>
+                </div>
+                <div class="simple-list-item">
+                    <h3>Bachelors in Sociology</h3>
+                    <p><strong>International Islamic University</strong>, Islamabad, Pakistan | <em>Graduated 09/2014</em></p>
+                </div>
+                <div class="simple-list-item">
+                    <h3>Key Achievements & Certifications</h3>
+                    <p>• 2nd Position in Debate Competition, Dept. of Sociology, IIUI</p>
+                    <p>• Certificate of Attendance: Seminar on Rural Development in Pakistan</p>
+                    <p>• Experience Certificate from Awami Development Organization, District Layyah</p>
+                    <p>• Certificate of Appreciation, 26th Cultural Week 2014</p>
+                    <p>• 3rd Position for Cultural Stall, Punjab</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact fade-in">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p>I am always open to discussing opportunities in social research, education, and community development. Please feel free to reach out.</p>
+                <div class="contact-info">
+                    <a href="mailto:me.zainabkhan22@gmail.com">📧 me.zainabkhan22@gmail.com</a>
+                    <a href="tel:+923047040024">📱 +92 304 704 0024</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ZAINAB KHAN. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add active state to navigation based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
